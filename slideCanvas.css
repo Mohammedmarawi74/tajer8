@@ -1,0 +1,350 @@
+/* ================================
+   Slide Canvas - Semantic CSS
+   ================================ */
+
+/* Main Slide Container */
+.slide-canvas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  user-select: none;
+  transition: background-color 0.5s, color 0.5s;
+  width: 500px;
+  height: 625px;
+}
+
+/* ================================
+   Header Banner Section
+   ================================ */
+.slide-header-banner {
+  position: relative;
+  height: 38%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: all 1s;
+}
+
+.slide-banner-overlay {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  transition: color 0.7s;
+}
+
+.slide-banner-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+/* Header Top Section */
+.slide-header-top {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.slide-header-program-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+  opacity: 0.9;
+  text-align: right;
+}
+
+.slide-program-name {
+  letter-spacing: 0.05em;
+}
+
+.slide-program-subtitle {
+  letter-spacing: 0.05em;
+}
+
+.slide-header-logo-container {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.slide-header-logo {
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Header Center Section */
+.slide-header-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding-top: 48px;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center;
+}
+
+.slide-header-badge {
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  background-color: var(--slide-secondary);
+  color: #ffffff;
+  padding: 6px 28px;
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  transition: all 0.5s;
+}
+
+.slide-header-title {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+/* Banner Bottom Gradient */
+.slide-banner-bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+}
+
+/* ================================
+   Content Section
+   ================================ */
+.slide-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.slide-content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 28px;
+}
+
+.slide-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Point Items */
+.slide-point-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.slide-point-icon-wrapper {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.slide-point-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.5s;
+  background-color: rgba(var(--slide-secondary), 0.125);
+  color: var(--slide-primary);
+}
+
+.slide-point-item:hover .slide-point-icon {
+  transform: scale(1.1);
+}
+
+.slide-point-icon-inner {
+  transform: scale(1.1);
+}
+
+.slide-point-text-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  padding-top: 2px;
+}
+
+.slide-point-title {
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 4px 0;
+}
+
+.slide-point-description {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* ================================
+   Footer Section
+   ================================ */
+/* .slide-footer {
+  padding: 24px 32px;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+} */
+/* 
+.slide-footer-accent-line {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  width: 112px;
+  height: 4px;
+  border-radius: 4px;
+  transition: all 0.5s;
+} */
+
+/* .slide-footer-logos {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.slide-footer-reef-logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+.slide-footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.slide-footer-social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.slide-footer-social-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+} */
+/* 
+.social-icon-light {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+}
+
+.social-icon-dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.slide-footer-social-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.social-handle-name {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.social-handle-number {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.3;
+  letter-spacing: 0.1em;
+}
+
+/* ================================
+   Bottom Bar Footer
+   ================================ */
+.slide-bottom-bar {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-top: 5px solid;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.slide-bottom-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 32px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.bottom-bar-text-right {
+  text-align: right;
+  white-space: nowrap;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.bottom-bar-text-left {
+  text-align: left;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.025em;
+}
+
+/* ================================
+   Utility Classes
+   ================================ */
+.slide-canvas.select-none {
+  user-select: none;
+}
