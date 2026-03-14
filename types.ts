@@ -6,14 +6,15 @@ export interface Point {
   description: string;
 }
 
-export type ThemeVariant = 
-  | 'investor' 
-  | 'chinese-red' 
-  | 'innovation-cyan' 
-  | 'analysis-fuchsia' 
-  | 'active-orange' 
-  | 'growth-lime' 
-  | 'deep-purple' 
+export type ThemeVariant =
+  | 'al-tajer'
+  | 'investor'
+  | 'chinese-red'
+  | 'innovation-cyan'
+  | 'analysis-fuchsia'
+  | 'active-orange'
+  | 'growth-lime'
+  | 'deep-purple'
   | 'dark-mode'
   | 'custom';
 

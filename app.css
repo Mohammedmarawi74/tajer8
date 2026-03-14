@@ -1,14 +1,14 @@
 /* ================================
-   App Component - Semantic CSS
+   App Component - Modern Al-Tajer Digital Design
    ================================ */
 
 /* Main App Container */
 .app-container {
   display: flex;
   height: 100vh;
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   overflow: hidden;
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
   color: #0f172a;
   direction: rtl;
 }
@@ -20,7 +20,7 @@
   width: 420px;
   flex-shrink: 0;
   z-index: 30;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.06);
   border-left: 1px solid #e2e8f0;
 }
 
@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 32px;
-  background-color: #f1f5f9;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
   position: relative;
   overflow: hidden;
 }
@@ -61,7 +61,7 @@
   background-color: #ffffff;
   padding: 6px;
   border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -4px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
@@ -75,18 +75,19 @@
   border-radius: 12px;
   color: #475569;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .toolbar-pagination-btn:hover:not(:disabled) {
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
+  transform: scale(1.05);
 }
 
 .toolbar-pagination-btn:disabled {
-  opacity: 0.2;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
@@ -112,8 +113,9 @@
 
 .toolbar-pagination-current {
   font-size: 14px;
-  font-weight: 900;
-  color: #047857;
+  font-weight: 800;
+  color: #2563eb;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 .toolbar-pagination-separator {
@@ -122,22 +124,23 @@
 }
 
 .toolbar-add-btn {
-  background-color: #059669;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
   padding: 14px;
   border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .toolbar-add-btn:hover {
-  background-color: #047857;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
   transform: scale(1.05);
+  box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.4);
 }
 
 .toolbar-add-btn:active {
@@ -154,10 +157,10 @@
   color: #ef4444;
   padding: 14px;
   border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
   border: 1px solid #f1f5f9;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,10 +169,11 @@
 .toolbar-delete-btn:hover:not(:disabled) {
   background-color: #fef2f2;
   transform: scale(1.05);
+  box-shadow: 0 15px 30px -5px rgba(239, 68, 68, 0.15);
 }
 
 .toolbar-delete-btn:disabled {
-  opacity: 0.2;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
@@ -193,16 +197,24 @@
   font-weight: 700;
   border: 1px solid #e2e8f0;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: #ffffff;
   color: #475569;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+}
+
+.toolbar-preview-btn:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .toolbar-preview-btn.active {
-  background-color: #1e293b;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
-  border-color: #1e293b;
+  border-color: #0f172a;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
 }
 
 .toolbar-preview-btn .icon {
@@ -214,28 +226,30 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #0f172a;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
   padding: 14px 32px;
   border-radius: 16px;
-  font-weight: 900;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  font-weight: 800;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.4);
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 .toolbar-export-btn:hover:not(:disabled) {
-  background-color: #000000;
-  transform: scale(1.02);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -10px rgba(15, 23, 42, 0.5);
 }
 
 .toolbar-export-btn:active:not(:disabled) {
-  transform: scale(0.95);
+  transform: translateY(0);
 }
 
 .toolbar-export-btn:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
@@ -284,7 +298,7 @@
 .preview-backdrop {
   position: absolute;
   inset: -40px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, transparent 50%, rgba(59, 130, 246, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, transparent 50%, rgba(16, 185, 129, 0.08) 100%);
   filter: blur(80px);
   border-radius: 64px;
   opacity: 0;
@@ -296,23 +310,24 @@
 }
 
 .preview-capture-area {
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.35), 0 10px 30px -10px rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .preview-ai-badge {
   position: absolute;
   top: -16px;
   right: -16px;
-  background-color: #10b981;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #0f172a;
   padding: 8px 16px;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 30px -10px rgba(16, 185, 129, 0.4);
   animation: bounce 1s ease-in-out infinite;
 }
 
@@ -323,7 +338,8 @@
 
 .preview-ai-badge-text {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 /* ================================
@@ -341,26 +357,28 @@
 .thumbnail-btn {
   width: 64px;
   height: 80px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 2px solid #ffffff;
   overflow: hidden;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
   background: none;
   padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .thumbnail-btn.active {
   border-color: #10b981;
   transform: scale(1.1);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.3);
   z-index: 10;
 }
 
 .thumbnail-btn:hover:not(.active) {
   border-color: #6ee7b7;
+  transform: scale(1.05);
 }
 
 .thumbnail-bg {
@@ -409,15 +427,16 @@
   position: absolute;
   bottom: 24px;
   left: 32px;
-  color: #cbd5e1;
-  font-weight: 900;
-  font-size: 20px;
+  color: #94a3b8;
+  font-weight: 800;
+  font-size: 18px;
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.025em;
   font-style: italic;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 0.6;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 /* ================================
@@ -513,6 +532,10 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(37, 99, 235, 0.3);
   border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.5);
 }

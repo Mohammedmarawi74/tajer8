@@ -1,5 +1,5 @@
 /* ================================
-   Slide Canvas - Semantic CSS
+   Slide Canvas - Modern Al-Tajer Digital Design
    ================================ */
 
 /* Main Slide Container */
@@ -8,11 +8,25 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
   user-select: none;
   transition: background-color 0.5s, color 0.5s;
   width: 500px;
   height: 625px;
+  direction: rtl;
+}
+
+/* Decorative Background Gradient */
+.slide-bg-gradient {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ================================
@@ -20,9 +34,10 @@
    ================================ */
 .slide-header-banner {
   position: relative;
-  height: 38%;
+  height: 42%;
   width: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .slide-banner-bg {
@@ -50,7 +65,7 @@
 /* Header Top Section */
 .slide-header-top {
   position: absolute;
-  top: 24px;
+  top: 20px;
   left: 24px;
   right: 24px;
   display: flex;
@@ -64,23 +79,26 @@
   flex-direction: column;
   align-items: flex-start;
   color: #ffffff;
-  font-size: 10px;
-  line-height: 1.5;
+  font-size: 9px;
+  line-height: 1.6;
   font-weight: 700;
-  opacity: 0.9;
+  opacity: 0.95;
   text-align: right;
+  letter-spacing: 0.02em;
 }
 
 .slide-program-name {
   letter-spacing: 0.05em;
+  margin-bottom: 2px;
 }
 
 .slide-program-subtitle {
   letter-spacing: 0.05em;
+  opacity: 0.85;
 }
 
 .slide-header-logo-container {
-  height: 44px;
+  height: 40px;
   display: flex;
   align-items: center;
 }
@@ -100,7 +118,7 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
-  padding-top: 48px;
+  padding-top: 40px;
   padding-left: 40px;
   padding-right: 40px;
   text-align: center;
@@ -110,26 +128,28 @@
   clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
   background-color: var(--slide-secondary);
   color: #ffffff;
-  padding: 6px 28px;
-  font-size: 14px;
-  font-weight: 900;
-  margin-bottom: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  padding: 6px 24px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 160px;
+  min-width: 150px;
   transition: all 0.5s;
+  letter-spacing: 0.02em;
 }
 
 .slide-header-title {
   color: #ffffff;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.3;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   letter-spacing: -0.025em;
   margin: 0;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 /* Banner Bottom Gradient */
@@ -147,109 +167,126 @@
    ================================ */
 .slide-content {
   flex: 1;
-  padding: 40px;
+  padding: 37px 28px;
+  z-index: 1;
 }
 
 .slide-content-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px 28px;
+  gap: 24px 20px;
 }
 
 .slide-content-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-/* Point Items */
+/* Point Items - Modern Card Design */
 .slide-point-item {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: flex-start;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.6) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-point-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.15);
 }
 
 .slide-point-icon-wrapper {
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .slide-point-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.5s;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(var(--slide-secondary), 0.125);
   color: var(--slide-primary);
 }
 
 .slide-point-item:hover .slide-point-icon {
-  transform: scale(1.1);
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
 }
 
 .slide-point-icon-inner {
   transform: scale(1.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-point-icon-inner svg {
+  stroke-width: 2.5px;
 }
 
 .slide-point-text-container {
   display: flex;
   flex-direction: column;
-  line-height: 1.25;
+  line-height: 1.4;
   padding-top: 2px;
+  flex: 1;
 }
 
 .slide-point-title {
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 1.2;
-  margin: 0 0 4px 0;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 6px 0;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+  color: var(--slide-text);
 }
 
 .slide-point-description {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
-  line-height: 1.5;
-  opacity: 0.7;
+  line-height: 1.6;
+  opacity: 0.75;
   margin: 0;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+  color: var(--slide-text);
 }
 
 /* ================================
    Footer Section
    ================================ */
-/* .slide-footer {
-  padding: 24px 32px;
-  border-top: 1px solid #f3f4f6;
+.slide-footer {
+  padding: 20px 28px;
+  border-top: 1px solid rgba(37, 99, 235, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   overflow: hidden;
-} */
-/* 
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent 0%, rgba(37, 99, 235, 0.02) 100%);
+}
+
 .slide-footer-accent-line {
   position: absolute;
   top: 0;
   right: 40px;
-  width: 112px;
-  height: 4px;
+  width: 96px;
+  height: 3px;
   border-radius: 4px;
   transition: all 0.5s;
-} */
-
-/* .slide-footer-logos {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.slide-footer-reef-logo {
-  height: 40px;
-  object-fit: contain;
 }
 
 .slide-footer-social {
@@ -257,23 +294,29 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  margin-right: auto;
 }
 
 .slide-footer-social-icons {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .slide-footer-social-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
-} */
-/* 
+  transition: all 0.2s;
+}
+
+.slide-footer-social-icon:hover {
+  transform: scale(1.1);
+}
+
 .social-icon-light {
   background-color: #f1f5f9;
   color: #94a3b8;
@@ -288,34 +331,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-} */
+}
 
 .social-handle-name {
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 .social-handle-number {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  opacity: 0.3;
+  opacity: 0.4;
   letter-spacing: 0.1em;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 /* ================================
    Bottom Bar Footer
    ================================ */
 .slide-bottom-bar {
-  height: 45px;
+  height: 48px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-top: 5px solid;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-top: 4px solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  background: linear-gradient(135deg, var(--slide-primary) 0%, rgba(37, 99, 235, 0.9) 100%);
 }
 
 .slide-bottom-bar-content {
@@ -332,7 +378,7 @@
 .bottom-bar-text-right {
   text-align: right;
   white-space: nowrap;
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
 }
 
 .bottom-bar-text-left {
@@ -348,3 +394,42 @@
 .slide-canvas.select-none {
   user-select: none;
 }
+
+/* ================================
+   Responsive & Animation Enhancements
+   ================================ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.slide-header-badge {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth entrance animation for point items */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-point-item {
+  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.slide-point-item:nth-child(1) { animation-delay: 0.05s; }
+.slide-point-item:nth-child(2) { animation-delay: 0.1s; }
+.slide-point-item:nth-child(3) { animation-delay: 0.15s; }
+.slide-point-item:nth-child(4) { animation-delay: 0.2s; }
+.slide-point-item:nth-child(5) { animation-delay: 0.25s; }
+.slide-point-item:nth-child(6) { animation-delay: 0.3s; }

@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { 
-  UserCheck, 
-  Briefcase, 
-  Calendar, 
-  DollarSign, 
-  ClipboardList, 
-  UploadCloud, 
-  UserMinus, 
+import {
+  UserCheck,
+  Briefcase,
+  Calendar,
+  DollarSign,
+  ClipboardList,
+  UploadCloud,
+  UserMinus,
   TrendingUp,
   MapPin,
   Leaf,
@@ -55,6 +55,10 @@ export const ICON_MAP: Record<string, React.ReactNode> = {
 };
 
 export const THEME_CONFIGS: Record<Exclude<ThemeVariant, 'custom'>, { name: string; colors: ThemeColors }> = {
+  'al-tajer': {
+    name: 'التاجر الرقمي',
+    colors: { primary: '#2563EB', secondary: '#10B981', bg: '#FFFFFF', text: '#0F172A' }
+  },
   'investor': {
     name: 'كحلي المستثمر',
     colors: { primary: '#0f172a', secondary: '#0ea5e9', bg: '#ffffff', text: '#1e293b' }
@@ -95,8 +99,8 @@ export const DEFAULT_SLIDE: Slide = {
   mainTitle: 'لقطاع المحاصيل البعلية',
   bgImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop',
   points: DEFAULT_POINTS,
-  theme: 'investor',
-  colors: THEME_CONFIGS['investor'].colors,
+  theme: 'al-tajer',
+  colors: THEME_CONFIGS['al-tajer'].colors,
   layout: 'grid',
   customCSS: '',
   customLogoUrl: undefined,

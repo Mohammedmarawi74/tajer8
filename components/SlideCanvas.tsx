@@ -13,12 +13,12 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
   const { primary, secondary, bg, text } = slide.colors;
 
   const contentLayoutClass = slide.layout === 'grid' ? 'slide-content-grid' : 'slide-content-list';
-  
+
   // Get the selected logo URL
   const selectedLogoIndex = slide.selectedLogoIndex || 0;
-  const logoUrl = slide.customLogoUrl || 
-                  (LOGO_OPTIONS[selectedLogoIndex] && !LOGO_OPTIONS[selectedLogoIndex].isCustom 
-                    ? LOGO_OPTIONS[selectedLogoIndex].url 
+  const logoUrl = slide.customLogoUrl ||
+                  (LOGO_OPTIONS[selectedLogoIndex] && !LOGO_OPTIONS[selectedLogoIndex].isCustom
+                    ? LOGO_OPTIONS[selectedLogoIndex].url
                     : '/logooo/logo-1.png');
 
   return (
@@ -34,9 +34,12 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
         '--slide-primary': primary,
         '--slide-secondary': secondary,
         '--slide-text': text,
-        fontFamily: '"IBM Plex Sans Arabic", sans-serif'
+        fontFamily: '"Cairo", "Tajawal", "Almarai", sans-serif'
       } as React.CSSProperties}
     >
+      {/* Decorative Background Gradient */}
+      <div className="slide-bg-gradient" />
+
       {/* Header Banner */}
       <div className="slide-header-banner">
         <div
@@ -86,7 +89,7 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
             <div className="slide-point-icon-wrapper">
               <div
                 className="slide-point-icon"
-                style={{ backgroundColor: `${secondary}20`, color: primary }}
+                style={{ backgroundColor: `${secondary}15`, color: primary }}
               >
                 <div className="slide-point-icon-inner">
                   {ICON_MAP[point.icon] || ICON_MAP['Leaf']}
@@ -106,8 +109,6 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
       </div>
 
       <div className="slide-footer" style={{ backgroundColor: bg }}>
-        <div className="slide-footer-accent-line" style={{ backgroundColor: secondary }} />
-
         <div className="slide-footer-social">
            <div className="slide-footer-social-icons">
              <div className={`slide-footer-social-icon ${bg === '#ffffff' ? 'social-icon-light' : 'social-icon-dark'}`}><i className="lucide-twitter" /></div>
@@ -123,8 +124,8 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
       {/* Bottom Bar Footer */}
       <div className="slide-bottom-bar" style={{ backgroundColor: primary }}>
         <div className="slide-bottom-bar-content">
-          <span className="bottom-bar-text-right" style={{ color: '#ffffff' }}>منصة المستثمر</span>
-          <span className="bottom-bar-text-left" style={{ color: '#ffffff' }}>al_investor.com</span>
+          <span className="bottom-bar-text-right" style={{ color: '#ffffff' }}>منصة التاجر الرقمية</span>
+          <span className="bottom-bar-text-left" style={{ color: '#ffffff' }}>Al-Tajer Digital</span>
         </div>
       </div>
     </div>
