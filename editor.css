@@ -785,6 +785,80 @@
 }
 
 /* ================================
+   Logo Grid (New)
+   ================================ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.logo-preview-img {
+  width: 100%;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: all 0.2s;
+}
+
+.logo-option-btn:hover .logo-preview-img {
+  filter: brightness(1) invert(0);
+}
+
+.logo-option-btn.active .logo-preview-img {
+  filter: brightness(1) invert(0);
+}
+
+.logo-option-name {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+  text-align: center;
+  margin-top: 4px;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+}
+
+.logo-option-btn:hover .logo-option-name {
+  color: #34d399;
+}
+
+.logo-option-btn.active .logo-option-name {
+  color: #10b981;
+}
+
+.logo-remove-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+}
+
+.logo-remove-all-btn:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-1px);
+}
+
+.logo-remove-all-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.logo-remove-all-btn .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ================================
    Advanced CSS Editor
    ================================ */
 .css-editor-textarea {

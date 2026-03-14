@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Slide, Point, ThemeVariant, ThemeColors } from '../types';
 import { ICON_MAP, THEME_CONFIGS, LOGO_OPTIONS } from '../constants';
-import { Trash2, Plus, Wand2, Image as ImageIcon, Code, Type, Palette, Sparkles, LayoutGrid, List, Upload, X, Check } from 'lucide-react';
+import { Trash2, Plus, Wand2, Image as ImageIcon, Code, Type, Palette, Sparkles, LayoutGrid, List, Upload, X, Check, LogOut } from 'lucide-react';
 
 interface EditorProps {
   slide: Slide;
@@ -28,13 +28,34 @@ const Editor: React.FC<EditorProps> = ({ slide, onUpdate, onGenerate, isGenerati
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        onUpdate({ 
-          ...slide, 
+        onUpdate({
+          ...slide,
           customLogoUrl: reader.result as string,
-          selectedLogoIndex: 3 // custom-upload index
+          selectedLogoIndex: -1 // custom-upload index
         });
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveLogo = () => {
+    onUpdate({
+      ...slide,
+      customLogoUrl: undefined,
+      selectedLogoIndex: -1 // -1 means no logo
+    });
+  };
+
+  const handleSelectLogo = (index: number) => {
+    if (index === -1) {
+      // Remove logo
+      handleRemoveLogo();
+    } else {
+      onUpdate({
+        ...slide,
+        customLogoUrl: undefined,
+        selectedLogoIndex: index
+      });
     }
   };
 
@@ -271,6 +292,50 @@ const Editor: React.FC<EditorProps> = ({ slide, onUpdate, onGenerate, isGenerati
                   <span>قائمة</span>
                 </button>
               </div>
+            </section>
+
+            {/* Logo Selection */}
+            <section className="space-y-4">
+              <div className="editor-section-header">
+                <h3 className="editor-section-title">اختيار الشعار</h3>
+                <button
+                  onClick={handleRemoveLogo}
+                  className="logo-remove-all-btn"
+                  title="إزالة الشعار كلياً"
+                  disabled={slide.selectedLogoIndex === -1 && !slide.customLogoUrl}
+                >
+                  <LogOut className="icon" />
+                  إزالة الكل
+                </button>
+              </div>
+              <div className="logo-grid">
+                {LOGO_OPTIONS.map((logo, index) => (
+                  <button
+                    key={logo.id}
+                    onClick={() => handleSelectLogo(index)}
+                    className={`logo-option-btn ${slide.selectedLogoIndex === index ? 'active' : ''}`}
+                  >
+                    <img
+                      src={logo.preview || logo.url}
+                      alt={logo.name}
+                      className="logo-preview-img"
+                    />
+                    <span className="logo-option-name">{logo.name}</span>
+                    {slide.selectedLogoIndex === index && (
+                      <div className="logo-check-badge">
+                        <Check className="logo-check-icon" />
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleLogoUpload}
+                className="hidden"
+              />
             </section>
           </div>
         )}

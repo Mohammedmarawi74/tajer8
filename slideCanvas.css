@@ -268,7 +268,7 @@
    Footer Section
    ================================ */
 .slide-footer {
-  padding: 20px 28px;
+  /* padding: 20px 28px; */
   border-top: 1px solid rgba(37, 99, 235, 0.08);
   display: flex;
   justify-content: space-between;

@@ -1,12 +1,12 @@
 {
-  "name": "صانع-الكاروسيل-الاحترافي---reef-style",
+  "name": "tajer-carousel-maker-reef-style",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open", 
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview" 
   },
   "dependencies": {
     "react": "^19.2.3",

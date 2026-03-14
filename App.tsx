@@ -1,11 +1,13 @@
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Editor from './components/Editor';
 import SlideCanvas from './components/SlideCanvas';
+import VersionHistory from './components/VersionHistory';
 import { Slide, CarouselConfig } from './types';
 import { DEFAULT_SLIDE } from './constants';
 import { generateSlideContent } from './services/geminiService';
-import { Download, ChevronRight, ChevronLeft, PlusCircle, Trash, Eye, Loader2, Sparkles } from 'lucide-react';
+import { saveVersion, autoSaveManager } from './utils/versionStorage';
+import { Download, ChevronRight, ChevronLeft, PlusCircle, Trash, Eye, Loader2, Sparkles, History } from 'lucide-react';
 import { toPng } from 'html-to-image';
 
 const App: React.FC = () => {
@@ -14,6 +16,7 @@ const App: React.FC = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [showPreview, setShowPreview] = useState(true);
+  const [showVersionHistory, setShowVersionHistory] = useState(false);
   const exportRef = useRef<HTMLDivElement>(null);
   
   const [config] = useState<CarouselConfig>({
@@ -24,6 +27,24 @@ const App: React.FC = () => {
   });
 
   const currentSlide = slides[currentIndex];
+
+  // Auto-save version on slide change and interval
+  useEffect(() => {
+    autoSaveManager.start(currentSlide.id, () => {
+      saveVersion(currentSlide, 'حفظ تلقائي');
+    });
+    
+    // Save initial version when component mounts
+    saveVersion(currentSlide, 'النسخة الأولية');
+    
+    return () => {
+      autoSaveManager.stop(currentSlide.id);
+    };
+  }, [currentSlide.id]);
+
+  const handleSaveVersion = () => {
+    saveVersion(currentSlide, 'حفظ يدوي');
+  };
 
   const handleUpdateSlide = (updated: Slide) => {
     const newSlides = [...slides];
@@ -40,6 +61,8 @@ const App: React.FC = () => {
     };
     setSlides([...slides, newSlide]);
     setCurrentIndex(slides.length);
+    // Save initial version for new slide
+    setTimeout(() => saveVersion(newSlide, 'شريحة جديدة'), 100);
   };
 
   const handleDeleteSlide = () => {
@@ -183,6 +206,17 @@ const App: React.FC = () => {
       {/* 2. Main Workspace */}
       <main className="app-main">
 
+        {/* Version History Panel - Overlay */}
+        {showVersionHistory && (
+          <div className="version-history-overlay">
+            <VersionHistory
+              slide={currentSlide}
+              onUpdate={handleUpdateSlide}
+              onClose={() => setShowVersionHistory(false)}
+            />
+          </div>
+        )}
+
         {/* Upper Toolbar */}
         <div className="toolbar no-print">
           <div className="toolbar-controls">
@@ -224,6 +258,15 @@ const App: React.FC = () => {
                title="حذف هذه الشريحة"
              >
                <Trash className="icon" />
+             </button>
+
+             <button
+               onClick={() => setShowVersionHistory(true)}
+               className="toolbar-save-version-btn"
+               title="عرض سجل الإصدارات"
+             >
+               <History className="icon" />
+               سجل الإصدارات
              </button>
           </div>
 

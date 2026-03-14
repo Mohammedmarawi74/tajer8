@@ -14,10 +14,11 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
 
   const contentLayoutClass = slide.layout === 'grid' ? 'slide-content-grid' : 'slide-content-list';
 
-  // Get the selected logo URL
-  const selectedLogoIndex = slide.selectedLogoIndex || 0;
+  // Get the selected logo URL - handle -1 as no logo
+  const selectedLogoIndex = slide.selectedLogoIndex ?? 0;
+  const showLogo = selectedLogoIndex !== -1;
   const logoUrl = slide.customLogoUrl ||
-                  (LOGO_OPTIONS[selectedLogoIndex] && !LOGO_OPTIONS[selectedLogoIndex].isCustom
+                  (showLogo && LOGO_OPTIONS[selectedLogoIndex] && !LOGO_OPTIONS[selectedLogoIndex].isCustom
                     ? LOGO_OPTIONS[selectedLogoIndex].url
                     : '/logooo/logo-1.png');
 
@@ -28,13 +29,13 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
       dir="rtl"
       style={{
         width: '500px',
-        height: '625px',
+        height: '750px',
         backgroundColor: bg,
         color: text,
         '--slide-primary': primary,
         '--slide-secondary': secondary,
         '--slide-text': text,
-        fontFamily: '"Cairo", "Tajawal", "Almarai", sans-serif'
+        fontFamily: '"IBM Plex Sans Arabic", "Cairo", "Tajawal", "Almarai", sans-serif'
       } as React.CSSProperties}
     >
       {/* Decorative Background Gradient */}
@@ -58,14 +59,16 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
              <span className="slide-program-subtitle">الزراعية المستدامة</span>
            </div>
 
-           <div className="slide-header-logo-container">
-             <img
-               crossOrigin="anonymous"
-               src={logoUrl}
-               alt="Logo"
-               className="slide-header-logo"
-             />
-           </div>
+           {showLogo && (
+             <div className="slide-header-logo-container">
+               <img
+                 crossOrigin="anonymous"
+                 src={logoUrl}
+                 alt="Logo"
+                 className="slide-header-logo"
+               />
+             </div>
+           )}
         </div>
 
         <div className="slide-header-center">
@@ -108,24 +111,12 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ slide, config, id }) => {
         ))}
       </div>
 
-      <div className="slide-footer" style={{ backgroundColor: bg }}>
-        <div className="slide-footer-social">
-           <div className="slide-footer-social-icons">
-             <div className={`slide-footer-social-icon ${bg === '#ffffff' ? 'social-icon-light' : 'social-icon-dark'}`}><i className="lucide-twitter" /></div>
-             <div className={`slide-footer-social-icon ${bg === '#ffffff' ? 'social-icon-light' : 'social-icon-dark'}`}><i className="lucide-instagram" /></div>
-           </div>
-           <div className="slide-footer-social-handle">
-             <span className="social-handle-name" style={{ color: text }}>ReefSaudi</span>
-             <span className="social-handle-number" style={{ color: text }}>19930</span>
-           </div>
-        </div>
-      </div>
-
+     
       {/* Bottom Bar Footer */}
       <div className="slide-bottom-bar" style={{ backgroundColor: primary }}>
         <div className="slide-bottom-bar-content">
           <span className="bottom-bar-text-right" style={{ color: '#ffffff' }}>منصة التاجر الرقمية</span>
-          <span className="bottom-bar-text-left" style={{ color: '#ffffff' }}>Al-Tajer Digital</span>
+          <span className="bottom-bar-text-left" style={{ color: '#ffffff' }}>dtajer.com</span>
         </div>
       </div>
     </div>
